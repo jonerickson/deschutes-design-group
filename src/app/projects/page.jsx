@@ -102,7 +102,7 @@ export default function Projects() {
             <div className='relative z-10 flex h-12 w-auto items-center justify-center'>
               <Image
                 src={project.logo}
-                alt=''
+                alt='Project logo image'
                 className='h-8 w-auto'
                 unoptimized
               />

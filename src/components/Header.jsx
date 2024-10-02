@@ -207,8 +207,8 @@ function Logo({ className, ...props }) {
     >
       <Image
         src={logoImage}
-        alt=''
-        sizes='40rem'
+        alt='Deschutes Design Group LLC'
+        sizes='(max-width: 640px) 32rem, 40rem'
         className={clsx('h-8 w-auto object-contain sm:h-10')}
         priority
       />

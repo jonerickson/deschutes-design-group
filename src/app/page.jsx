@@ -11,10 +11,10 @@ import {
   XIcon,
   MailIcon,
 } from '@/components/SocialIcons';
-import image1 from '@/images/photos/image-1.png';
-import image2 from '@/images/photos/image-2.png';
-import image3 from '@/images/photos/image-3.png';
-import image4 from '@/images/photos/image-4.png';
+import elios from '@/images/photos/elios.png';
+import perscom from '@/images/photos/perscom.png';
+import levissawmill from '@/images/photos/levissawmill.png';
+import nitro from '@/images/photos/nitro.png';
 import { getAllArticles } from '@/lib/articles';
 import { formatDate } from '@/lib/formatDate';
 
@@ -239,19 +239,19 @@ function Photos() {
 
   return (
     <div className='mt-16 sm:mt-20'>
-      <div className='-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8'>
-        {[image1, image2, image3, image4].map((image, imageIndex) => (
+      <div className='-my-4 flex justify-center gap-5 overflow-hidden pb-6 pt-4 sm:gap-8'>
+        {[elios, perscom, levissawmill, nitro].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/10] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:h-60 sm:w-[24rem] sm:rounded-2xl dark:bg-zinc-800',
+              'relative aspect-[9/10] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 shadow-lg sm:h-60 sm:w-[24rem] sm:rounded-2xl dark:bg-zinc-800',
               rotations[imageIndex % rotations.length]
             )}
           >
             <Image
               src={image}
-              alt=''
-              sizes='(min-width: 12rem) 24rem, 15rem'
+              alt='Recent project image'
+              sizes='(max-width: 640px) 12rem, 24rem'
               className='absolute inset-0 h-full w-full object-cover'
             />
           </div>
