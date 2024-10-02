@@ -10,7 +10,7 @@ export const metadata = {
       'Deschutes Design Group LLC - Software developer, web applications, and consulting',
   },
   description:
-    'We are Deschutes Design Group LLC,a premier web development firm located in the picturesque city of Bend, Oregon. Our expertise lies in crafting exceptional web applications and revolutionary web design concepts.',
+    'A premier web development firm located in the picturesque city of Bend, Oregon. Our expertise lies in crafting exceptional web applications and revolutionary web design concepts.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
