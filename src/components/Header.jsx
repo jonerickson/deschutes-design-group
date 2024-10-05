@@ -14,7 +14,8 @@ import {
 import clsx from 'clsx';
 
 import { Container } from '@/components/Container';
-import logoImage from '@/images/logo.png';
+import logoImageLight from '@/images/logo.png';
+import logoImageDark from '@/images/logo_dark.png';
 
 function CloseIcon(props) {
   return (
@@ -198,6 +199,8 @@ function clamp(number, a, b) {
 }
 
 function Logo({ className, ...props }) {
+  let { resolvedTheme, setTheme } = useTheme();
+
   return (
     <Link
       href='/'
@@ -205,13 +208,23 @@ function Logo({ className, ...props }) {
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <Image
-        src={logoImage}
-        alt='Deschutes Design Group LLC'
-        sizes='(max-width: 640px) 32rem, 40rem'
-        className={clsx('h-8 w-auto object-contain sm:h-10')}
-        priority
-      />
+      {resolvedTheme === 'light' ? (
+        <Image
+          src={logoImageLight}
+          alt='Deschutes Design Group LLC'
+          sizes='(max-width: 640px) 32rem, 44rem'
+          className={clsx('h-8 w-auto object-contain sm:h-10')}
+          priority
+        />
+      ) : (
+        <Image
+          src={logoImageDark}
+          alt='Deschutes Design Group LLC'
+          sizes='(max-width: 640px) 32rem, 44rem'
+          className={clsx('h-8 w-auto object-contain sm:h-10')}
+          priority
+        />
+      )}
     </Link>
   );
 }

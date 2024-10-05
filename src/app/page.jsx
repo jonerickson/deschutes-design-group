@@ -251,7 +251,7 @@ function Photos() {
             <Image
               src={image}
               alt='Recent project image'
-              sizes='(max-width: 640px) 12rem, 24rem'
+              sizes='(max-width: 640px) 12rem, 28rem'
               className='absolute inset-0 h-full w-full object-cover'
             />
           </div>
