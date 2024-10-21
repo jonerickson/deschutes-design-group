@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import { Card } from '@/components/Card';
 import { SimpleLayout } from '@/components/SimpleLayout';
+import logoDiscord from '@/images/logos/discord.png';
 import logoNitro from '@/images/logos/nitro.svg';
 import logoPerscom from '@/images/logos/perscom.svg';
 import logoLevisSawmill from '@/images/logos/levissawmill.png';
@@ -11,6 +12,16 @@ import logoAws from '@/images/logos/aws.png';
 import logoWordpress from '@/images/logos/wordpress.png';
 
 const projects = [
+  {
+    name: 'Discord for Invision Community',
+    description:
+      'Up your Invision Community with this all-in-one Discord integration and engagement application.',
+    link: {
+      href: 'https://store.deschutesdesigngroup.com/buy/eaaa476c-201a-438a-8896-61898ae6fab1',
+      label: 'store.deschutesdesigngroup.com',
+    },
+    logo: logoDiscord,
+  },
   {
     name: 'Elios Fund',
     description:
@@ -28,7 +39,7 @@ const projects = [
   {
     name: "Levi's Sawmill",
     description:
-      'Landing page for local sawmill built with Laravel, Inertia.js and Vue.js.',
+      'Landing page for a local sawmill built with Laravel, Inertia.js and Vue.js.',
     link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
     logo: logoLevisSawmill,
   },
@@ -50,19 +61,19 @@ const projects = [
     logo: logoCommunityHive,
   },
   {
-    name: 'AWS Simple Email Service IC Plugin',
+    name: 'AWS Simple Email Service for Invision Community',
     description:
-      'Invision Community 4 that enables transactional email via AWS Simple Email Service - the cheapest transactional email service on the market.',
+      'Invision Community 4 application that enables transactional email via the AWS Simple Email Service API.',
     link: {
-      href: 'https://github.com/DeschutesDesignGroupLLC/invision-aws-ses-api',
-      label: 'github.com',
+      href: 'https://store.deschutesdesigngroup.com/buy/0182a1f0-48ea-4438-9b40-293441be9f85',
+      label: 'store.deschutesdesigngroup.com',
     },
     logo: logoAws,
   },
   {
     name: 'Wordpress Plugin Template',
     description:
-      'A starter kit for your next WP Plugin utilizing Roots Acorn which gives you access to the Laravel framework.',
+      'Starter kit for your next WP Plugin utilizing Roots Acorn which gives you access to the Laravel framework.',
     link: {
       href: 'http://github.com/DeschutesDesignGroupLLC/wordpress-plugin-template',
       label: 'github.com',

@@ -119,6 +119,12 @@ function MobileNavigation(props) {
             <MobileNavItem href='/projects'>Projects</MobileNavItem>
             <MobileNavItem href='/technology'>Technology</MobileNavItem>
             <MobileNavItem
+              href='https://store.deschutesdesigngroup.com'
+              target='_blank'
+            >
+              Store
+            </MobileNavItem>
+            <MobileNavItem
               href='https://portal.deschutesdesigngroup.com'
               target='_blank'
             >
@@ -162,6 +168,9 @@ function DesktopNavigation(props) {
         <NavItem href='/articles'>Articles</NavItem>
         <NavItem href='/projects'>Projects</NavItem>
         <NavItem href='/technology'>Technology</NavItem>
+        <NavItem href='https://store.deschutesdesigngroup.com' target='_blank'>
+          Store
+        </NavItem>
         <NavItem href='https://portal.deschutesdesigngroup.com' target='_blank'>
           Clients
         </NavItem>
