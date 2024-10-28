@@ -17,6 +17,7 @@ import levissawmill from '@/images/photos/levissawmill.png';
 import nitro from '@/images/photos/nitro.png';
 import { getAllArticles } from '@/lib/articles';
 import { formatDate } from '@/lib/formatDate';
+import { Input } from '@headlessui/react';
 
 function BriefcaseIcon(props) {
   return (
@@ -97,7 +98,7 @@ function Newsletter() {
         Get notified when we publish something new, and unsubscribe at any time.
       </p>
       <div className='mt-6 flex'>
-        <input
+        <Input
           type='email'
           placeholder='Email address'
           aria-label='Email address'
@@ -277,9 +278,12 @@ export default async function Home() {
             is here to provide personalized services that will help your
             business shine in a competitive landscape.
           </p>
-          <Button className='mt-6' href='mailto:info@deschutesdesigngroup.com'>
-            Get started
-          </Button>
+          <div className='mt-6 flex flex-row gap-2'>
+            <Button href='/contact'>Get started</Button>
+            <Button variant='secondary' href='/contact'>
+              Contact us
+            </Button>
+          </div>
           <div className='mt-6 flex gap-6'>
             <SocialLink
               href='https://x.com/jonericksonx'
