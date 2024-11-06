@@ -1,5 +1,6 @@
 import { Providers } from '@/app/providers';
 import { Layout } from '@/components/Layout';
+import { Affiliates } from '@/components/Affiliates';
 
 import '@/styles/tailwind.css';
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
             <Layout>{children}</Layout>
           </div>
         </Providers>
+        <Affiliates />
       </body>
     </html>
   );
