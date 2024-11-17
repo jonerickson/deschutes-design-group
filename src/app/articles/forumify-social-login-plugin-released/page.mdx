@@ -1,0 +1,25 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import pluginImage from './social-login.png';
+
+export const article = {
+  author: 'Jon Erickson',
+  date: '2024-11-17',
+  title: 'Social Login Plugin for Forumify Released',
+  description:
+    'Supercharge your forumify instance with our plug-in-play social login plugin. This plugin provides out-of-the-box support for a variety of different login providers that allow members to sign in and register with your community.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+};
+
+export default (props) => <ArticleLayout article={article} {...props} />;
+
+We've released an exciting plugin for users of the [forumify](https://forumify.net) software that enables seamless login and registration experience for community members through a variety of social login providers. Currently the plugin supports **PERSCOM**, **Discord**, and **Google**. More providers coming soon!
+
+To download, check out the forumify marketplace or install the plugin using the package name: `deschutesdesigngroupllc/forumify-social-login-plugin`.
+
+<Image src={pluginImage} alt='Social Login Plugin for Forumify Released' />
+
+For support or questions relating to the plugin, please reach out to [us](/contact) or email [support@deschutesdesigngroup.com](mailto:support@deschutesdesigngroup.com).
