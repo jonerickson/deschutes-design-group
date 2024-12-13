@@ -2,6 +2,7 @@ import { SimpleLayout } from '@/components/SimpleLayout';
 import { ContactUsForm } from '@/components/ContactUsForm';
 import { sendContactFormMessage } from '@/lib/mail';
 import { revalidatePath } from 'next/cache';
+import Link from 'next/link';
 
 export const metadata = {
   title: 'Contact',
@@ -38,6 +39,13 @@ export default function Contact() {
       title='Send us a message.'
       intro='Reach out if you have a question about our services, need support help or just general advice on how to tackle your next project. We are always here to help!'
     >
+      <div className='mb-8 text-sm font-semibold text-zinc-800'>
+        If you are looking for support needs, please first check out our{' '}
+        <Link href='/support' className='underline' target='_blank'>
+          support
+        </Link>{' '}
+        page.
+      </div>
       <ContactUsForm siteKey={siteKey} sendMessage={sendMessage} />
     </SimpleLayout>
   );

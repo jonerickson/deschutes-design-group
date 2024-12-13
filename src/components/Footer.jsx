@@ -43,9 +43,7 @@ export function Footer() {
                 >
                   Clients
                 </NavLink>
-                <NavLink href='mailto:support@deschutesdesigngroup.com'>
-                  Support
-                </NavLink>
+                <NavLink href='/support'>Support</NavLink>
                 <NavLink href='/contact'>Contact</NavLink>
               </div>
               <p className='text-sm text-zinc-400 dark:text-zinc-500'>
