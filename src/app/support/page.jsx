@@ -19,7 +19,7 @@ export default function Support() {
           <div className='text-sm text-zinc-600'>
             Slack offers a collaborative and community-driven space where you
             can easily ask questions and receive support from both our team and
-            fellow users. It's often the quickest way to get assistance and
+            fellow users. It&apos;s often the quickest way to get assistance and
             fosters a more interactive, support-focused environment.
           </div>
         </div>
