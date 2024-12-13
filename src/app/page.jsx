@@ -279,9 +279,9 @@ export default async function Home() {
             business shine in a competitive landscape.
           </p>
           <div className='mt-6 flex flex-row gap-2'>
-            <Button href='/contact'>Get started</Button>
-            <Button variant='secondary' href='/contact'>
-              Contact us
+            <Button href='/contact'>Contact us</Button>
+            <Button variant='secondary' href='/support'>
+              Get support
             </Button>
           </div>
           <div className='mt-6 flex gap-6'>
