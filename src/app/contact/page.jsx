@@ -39,7 +39,7 @@ export default function Contact() {
       title='Send us a message.'
       intro='Reach out if you have a question about our services, need support help or just general advice on how to tackle your next project. We are always here to help!'
     >
-      <div className='mb-8 text-sm font-semibold text-zinc-800'>
+      <div className='mb-8 text-sm font-semibold text-zinc-600 dark:text-zinc-400'>
         If you are looking for support needs, please first check out our{' '}
         <Link href='/support' className='underline' target='_blank'>
           support

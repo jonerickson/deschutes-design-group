@@ -15,8 +15,10 @@ export default function Support() {
     >
       <div className='flex flex-col space-y-8'>
         <div className=''>
-          <div className='font-bold'>Slack</div>
-          <div className='text-sm text-zinc-600'>
+          <div className='font-bold text-zinc-800 dark:text-zinc-100'>
+            Slack
+          </div>
+          <div className='text-sm text-zinc-600 dark:text-zinc-400'>
             Slack offers a collaborative and community-driven space where you
             can easily ask questions and receive support from both our team and
             fellow users. It&apos;s often the quickest way to get assistance and
@@ -24,8 +26,10 @@ export default function Support() {
           </div>
         </div>
         <div className=''>
-          <div className='font-bold'>Email</div>
-          <div className='text-sm text-zinc-600'>
+          <div className='font-bold text-zinc-800 dark:text-zinc-100'>
+            Email
+          </div>
+          <div className='text-sm text-zinc-600 dark:text-zinc-400'>
             For more complex issues or when sensitive information—such as
             emails, passwords, or login credentials—needs to be securely
             exchanged, email is the preferred method of communication. It
@@ -33,13 +37,15 @@ export default function Support() {
           </div>
         </div>
         <div className=''>
-          <div className='font-bold'>Contact Form</div>
-          <div className='text-sm text-zinc-600'>
+          <div className='font-bold text-zinc-800 dark:text-zinc-100'>
+            Contact Form
+          </div>
+          <div className='text-sm text-zinc-600 dark:text-zinc-400'>
             For a faster way to reach our support team, use the contact form to
             email us directly.
           </div>
         </div>
-        <div className='flex flex-row items-center space-x-4'>
+        <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
           <Button href='https://slack.deschutesdesigngroup.com' target='_blank'>
             <Slack className='size-4' />
             Join Slack
