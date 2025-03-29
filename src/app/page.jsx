@@ -18,6 +18,7 @@ import nitro from '@/images/photos/nitro.png';
 import { getAllArticles } from '@/lib/articles';
 import { formatDate } from '@/lib/formatDate';
 import { Input } from '@headlessui/react';
+import { Testimonials } from '@/components/Testimonials';
 
 function BriefcaseIcon(props) {
   return (
@@ -321,6 +322,9 @@ export default async function Home() {
             <Resume />
           </div>
         </div>
+      </Container>
+      <Container>
+        <Testimonials />
       </Container>
     </>
   );
