@@ -65,7 +65,7 @@ export function Testimonials() {
           <blockquote className='p-6 text-lg font-semibold tracking-tight text-zinc-800 sm:p-12 sm:text-xl/8 dark:text-zinc-400'>
             <p>{`“${featuredTestimonial.body}”`}</p>
           </blockquote>
-          <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-zinc-100 px-6 py-4 sm:flex-nowrap'>
+          <figcaption className='flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-zinc-100 px-6 py-4 sm:flex-nowrap dark:border-zinc-700/40'>
             <img
               alt=''
               src={featuredTestimonial.author.imageUrl}
