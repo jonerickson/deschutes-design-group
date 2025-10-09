@@ -2,6 +2,9 @@ import Image from 'next/image';
 
 import { Card } from '@/components/Card';
 import { SimpleLayout } from '@/components/SimpleLayout';
+import { HandHeartIcon, Server } from 'lucide-react';
+import logoTf from '@/images/logos/terraform.png';
+import logoExergy from '@/images/logos/exergy.png';
 import logoDiscord from '@/images/logos/discord.png';
 import logoNitro from '@/images/logos/nitro.svg';
 import logoPerscom from '@/images/logos/perscom.svg';
@@ -12,6 +15,48 @@ import logoAws from '@/images/logos/aws.png';
 import logoWordpress from '@/images/logos/wordpress.png';
 
 const projects = [
+  {
+    name: 'API Playground',
+    description:
+      'An open source repository on developing and deploying APIs using different frameworks and providers.',
+    link: {
+      href: 'https://github.com/jonerickson/api-playground',
+      label: 'github.com',
+    },
+    logoType: 'icon',
+    logo: Server,
+  },
+  {
+    name: 'Deploy Laravel with EKS and Terraform',
+    description:
+      'An open source repository and template for deploying Laravel to AWS EKS using Terraform.',
+    link: {
+      href: 'https://github.com/jonerickson/laravel-k8s-tf-eks',
+      label: 'github.com',
+    },
+    logo: logoTf,
+  },
+  {
+    name: 'Exergy Health',
+    description:
+      'Medical practice that targets a 360 approach to personalized healthcare. Built with Laravel and Statamic. Deployed using Laravel Cloud.',
+    link: {
+      href: 'https://www.exergyhealth.org/',
+      label: 'exergyhealth.org',
+    },
+    logo: logoExergy,
+  },
+  {
+    name: 'Campbell Wallace Foundation',
+    description:
+      'A 501(c)(3) organization landing page built with Next.js and deployed using Vercel.',
+    link: {
+      href: 'https://www.thecwf.org/',
+      label: 'thecwf.org',
+    },
+    logoType: 'icon',
+    logo: HandHeartIcon,
+  },
   {
     name: 'Discord for Invision Community',
     description:
@@ -108,26 +153,35 @@ export default function Projects() {
         role='list'
         className='grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'
       >
-        {projects.map((project) => (
-          <Card as='li' key={project.name}>
-            <div className='relative z-10 flex h-12 w-auto items-center justify-center'>
-              <Image
-                src={project.logo}
-                alt='Project logo image'
-                className='h-8 w-auto'
-                unoptimized
-              />
-            </div>
-            <h2 className='mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100'>
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
-            </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className='relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-600 dark:text-zinc-200'>
-              <LinkIcon className='h-6 w-6 flex-none' target='_blank' />
-              <span className='ml-2'>{project.link.label}</span>
-            </p>
-          </Card>
-        ))}
+        {projects.map((project) => {
+          return (
+            <Card as='li' key={project.name}>
+              <div className='relative z-10 flex h-12 w-auto items-center justify-center'>
+                {project.logoType !== undefined &&
+                project.logoType === 'icon' ? (
+                  <project.logo className='size-10 text-zinc-700 dark:text-zinc-100' />
+                ) : (
+                  <Image
+                    src={project.logo}
+                    alt={`${project.name} logo`}
+                    className='h-8 w-auto'
+                    unoptimized
+                  />
+                )}
+              </div>
+              <h2 className='mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100'>
+                <Card.Link href={project.link.href} target='_blank'>
+                  {project.name}
+                </Card.Link>
+              </h2>
+              <Card.Description>{project.description}</Card.Description>
+              <p className='relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-600 dark:text-zinc-200'>
+                <LinkIcon className='h-6 w-6 flex-none' target='_blank' />
+                <span className='ml-2'>{project.link.label}</span>
+              </p>
+            </Card>
+          );
+        })}
       </ul>
     </SimpleLayout>
   );
