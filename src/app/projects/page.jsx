@@ -2,19 +2,42 @@ import Image from 'next/image';
 
 import { Card } from '@/components/Card';
 import { SimpleLayout } from '@/components/SimpleLayout';
-import { HandHeartIcon, Server } from 'lucide-react';
-import logoTf from '@/images/logos/terraform.png';
+import logoTf from '@/images/logos/terraform.svg';
 import logoExergy from '@/images/logos/exergy.png';
 import logoDiscord from '@/images/logos/discord.png';
 import logoNitro from '@/images/logos/nitro.svg';
 import logoPerscom from '@/images/logos/perscom.svg';
-import logoLevisSawmill from '@/images/logos/levissawmill.png';
 import logoCommunityHive from '@/images/logos/communityhive.svg';
 import logoElios from '@/images/logos/elios.png';
-import logoAws from '@/images/logos/aws.png';
-import logoWordpress from '@/images/logos/wordpress.png';
+import logoAws from '@/images/logos/aws.svg';
+import logoWordpress from '@/images/logos/wordpress.svg';
+import logoReactStudios from '@/images/logos/react-studios.svg';
+import logoLaravel from '@/images/logos/laravel.svg';
+import logoOpenApi from '@/images/logos/openapi.svg';
+import logoVue from '@/images/logos/vue.svg';
+import logoNext from '@/images/logos/nextjs.svg';
 
 const projects = [
+  {
+    name: 'Laravel Community',
+    description:
+      'An open-source platform that combines the power of an e-commerce store, user marketplace, community forums, and content management into one seamless experience.',
+    link: {
+      href: 'https://github.com/jonerickson/laravel-community',
+      label: 'github.com',
+    },
+    logo: logoLaravel,
+  },
+  {
+    name: 'REACT Studios',
+    description:
+      'An open source repository on developing and deploying APIs using different frameworks and providers.',
+    link: {
+      href: 'https://reactstudios.com',
+      label: 'reactstudios.com',
+    },
+    logo: logoReactStudios,
+  },
   {
     name: 'API Playground',
     description:
@@ -23,8 +46,7 @@ const projects = [
       href: 'https://github.com/jonerickson/api-playground',
       label: 'github.com',
     },
-    logoType: 'icon',
-    logo: Server,
+    logo: logoOpenApi,
   },
   {
     name: 'Deploy Laravel with EKS and Terraform',
@@ -54,8 +76,7 @@ const projects = [
       href: 'https://www.thecwf.org/',
       label: 'thecwf.org',
     },
-    logoType: 'icon',
-    logo: HandHeartIcon,
+    logo: logoNext,
   },
   {
     name: 'Discord for Invision Community',
@@ -86,7 +107,7 @@ const projects = [
     description:
       'Landing page for a local sawmill built with Laravel, Inertia.js and Vue.js.',
     link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
-    logo: logoLevisSawmill,
+    logo: logoVue,
   },
   {
     name: 'PERSCOM Personnel Management System',
