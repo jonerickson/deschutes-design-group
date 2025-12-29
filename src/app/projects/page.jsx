@@ -31,7 +31,7 @@ const projects = [
   {
     name: 'REACT Studios',
     description:
-      'An open source repository on developing and deploying APIs using different frameworks and providers.',
+      'An online gaming community that brings together thw power of forums, subscriptions, content management, and an e-commerce store. Built with Laravel/React.',
     link: {
       href: 'https://reactstudios.com',
       label: 'reactstudios.com',
@@ -51,7 +51,7 @@ const projects = [
   {
     name: 'Deploy Laravel with EKS and Terraform',
     description:
-      'An open source repository and template for deploying Laravel to AWS EKS using Terraform.',
+      'An open source repository and template for deploying Laravel to AWS EKS using Terraform and Helm.',
     link: {
       href: 'https://github.com/jonerickson/laravel-k8s-tf-eks',
       label: 'github.com',
