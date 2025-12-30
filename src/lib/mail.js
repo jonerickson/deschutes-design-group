@@ -1,4 +1,5 @@
 import { SESClient } from '@aws-sdk/client-ses';
+import * as aws from '@aws-sdk/client-ses';
 import * as nodemailer from 'nodemailer';
 
 const fromMail = 'no-reply@deschutesdesigngroup.com';
@@ -31,7 +32,7 @@ async function createTransporter() {
   });
 
   return nodemailer.createTransport({
-    SES: { ses: sesClient, aws: { SESClient } },
+    SES: { ses: sesClient, aws: aws },
   });
 }
 
