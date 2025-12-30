@@ -3,11 +3,13 @@
 import { Input, Textarea } from '@headlessui/react';
 import { Turnstile } from '@/components/Turnstile';
 import { Button } from '@/components/Button';
-import { useRef, useState } from 'react';
+import { Loader2 } from 'lucide-react';
+import { useRef, useState, useTransition } from 'react';
 
 export function ContactUsForm({ siteKey, sendMessage }) {
   const formRef = useRef();
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(!!siteKey);
+  const [isPending, startTransition] = useTransition();
   const [sent, setSent] = useState(false);
 
   const onVerify = (token) => {
@@ -15,12 +17,20 @@ export function ContactUsForm({ siteKey, sendMessage }) {
   };
 
   const sendForm = async (formData) => {
-    const results = await sendMessage(formData);
+    setSent(false);
 
-    if (results.ok) {
-      formRef.current?.reset();
-      setSent(true);
-    }
+    startTransition(async () => {
+      const results = await sendMessage(formData);
+
+      if (results.ok) {
+        formRef.current?.reset();
+        setSent(true);
+
+        if (siteKey) {
+          setDisabled(true);
+        }
+      }
+    });
   };
 
   return (
@@ -62,12 +72,21 @@ export function ContactUsForm({ siteKey, sendMessage }) {
             className='w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/10'
           />
         </div>
+        {siteKey && (
+          <div>
+            <Turnstile siteKey={siteKey} onVerify={onVerify} />
+          </div>
+        )}
         <div>
-          <Turnstile siteKey={siteKey} onVerify={onVerify} />
-        </div>
-        <div>
-          <Button type='submit' disabled={disabled}>
-            Send message
+          <Button type='submit' disabled={disabled || isPending}>
+            {isPending ? (
+              <span className='flex items-center gap-2'>
+                <Loader2 className='size-4 animate-spin' />
+                Sending...
+              </span>
+            ) : (
+              'Send message'
+            )}
           </Button>
         </div>
         {sent && (

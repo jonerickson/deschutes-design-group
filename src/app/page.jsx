@@ -160,7 +160,7 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'PERSCOM.io',
+      company: 'PERSCOM',
       title: 'Lead Developer',
       start: '2017',
       url: 'https://perscom.io',

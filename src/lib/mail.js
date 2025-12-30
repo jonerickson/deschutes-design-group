@@ -1,26 +1,44 @@
-import * as AWS from 'aws-sdk';
+import { SESClient } from '@aws-sdk/client-ses';
 import * as nodemailer from 'nodemailer';
 
-AWS.config.update({
-  accessKeyId: process.env.DDG_AWS_ACCESS_KEY,
-  secretAccessKey: process.env.DDG_AWS_SECRET_ACCESS_KEY,
-  region: 'us-west-2',
-});
-
-AWS.config.getCredentials(function (error) {
-  if (error) {
-    console.error('Failed to configure AWS credentials', error.stack);
-  }
-});
-
 const fromMail = 'no-reply@deschutesdesigngroup.com';
-const ses = new AWS.SES({ apiVersion: '2010-12-01' });
-const transporter = nodemailer.createTransport({
-  SES: ses,
-});
+
+async function createTransporter() {
+  if (
+    !process.env.DDG_AWS_ACCESS_KEY ||
+    process.env.NODE_ENV === 'development'
+  ) {
+    console.log('📧 Using Ethereal Email for local testing...');
+    const testAccount = await nodemailer.createTestAccount();
+
+    return nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass,
+      },
+    });
+  }
+
+  const sesClient = new SESClient({
+    region: 'us-west-2',
+    credentials: {
+      accessKeyId: process.env.DDG_AWS_ACCESS_KEY,
+      secretAccessKey: process.env.DDG_AWS_SECRET_ACCESS_KEY,
+    },
+  });
+
+  return nodemailer.createTransport({
+    SES: { ses: sesClient, aws: { SESClient } },
+  });
+}
 
 export const sendContactFormMessage = async (name, email, message) => {
   try {
+    const transporter = await createTransporter();
+
     const response = await transporter.sendMail({
       from: fromMail,
       to: 'info@deschutesdesigngroup.com',
@@ -45,6 +63,16 @@ Message: ${message} <br/>
 </html>
 `,
     });
+
+    if (
+      !process.env.DDG_AWS_ACCESS_KEY ||
+      process.env.NODE_ENV === 'development'
+    ) {
+      const previewUrl = nodemailer.getTestMessageUrl(response);
+      console.log('📬 Preview email:', previewUrl);
+      console.log('✅ Email sent successfully!');
+    }
+
     return response?.messageId
       ? { ok: true }
       : { ok: false, msg: 'Failed to send email' };
