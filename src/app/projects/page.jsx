@@ -21,7 +21,7 @@ const projects = [
   {
     name: 'Laravel Community',
     description:
-      'An open-source platform that combines the power of an e-commerce store, user marketplace, community forums, and content management into one seamless experience.',
+      'A comprehensive open-source platform unifying e-commerce, user marketplace, community forums, and CMS into a single cohesive ecosystem. The all-in-one solution for building thriving online communities.',
     link: {
       href: 'https://github.com/jonerickson/laravel-community',
       label: 'github.com',
@@ -29,9 +29,9 @@ const projects = [
     logo: logoLaravel,
   },
   {
-    name: 'REACT Studios',
+    name: 'REACT Studios™',
     description:
-      'An online gaming community that brings together thw power of forums, subscriptions, content management, and an e-commerce store. Built with Laravel/React.',
+      'A feature-rich gaming community platform combining forums, subscriptions, content management, and e-commerce. Built with Laravel and React to deliver a blazing-fast, immersive member experience.',
     link: {
       href: 'https://reactstudios.com',
       label: 'reactstudios.com',
@@ -41,7 +41,7 @@ const projects = [
   {
     name: 'API Playground',
     description:
-      'An open source repository on developing and deploying APIs using different frameworks and providers.',
+      'Open-source reference implementations for building and deploying production-ready APIs. Explore patterns and best practices across Laravel, Express, FastAPI, and more.',
     link: {
       href: 'https://github.com/jonerickson/api-playground',
       label: 'github.com',
@@ -51,7 +51,7 @@ const projects = [
   {
     name: 'Deploy Laravel with EKS and Terraform',
     description:
-      'An open source repository and template for deploying Laravel to AWS EKS using Terraform and Helm.',
+      'Production-ready infrastructure-as-code template for deploying Laravel applications to AWS EKS. Includes Terraform modules, Helm charts, and CI/CD pipelines for enterprise-grade Kubernetes deployments.',
     link: {
       href: 'https://github.com/jonerickson/laravel-k8s-tf-eks',
       label: 'github.com',
@@ -61,7 +61,7 @@ const projects = [
   {
     name: 'Exergy Health',
     description:
-      'Medical practice that targets a 360 approach to personalized healthcare. Built with Laravel and Statamic. Deployed using Laravel Cloud.',
+      'Modern medical practice website delivering a 360° approach to personalized healthcare. Built with Laravel and Statamic CMS, deployed on Laravel Cloud for seamless content management and patient engagement.',
     link: {
       href: 'https://www.exergyhealth.org/',
       label: 'exergyhealth.org',
@@ -71,7 +71,7 @@ const projects = [
   {
     name: 'Campbell Wallace Foundation',
     description:
-      'A 501(c)(3) organization landing page built with Next.js and deployed using Vercel.',
+      'Clean, accessible website for a 501(c)(3) nonprofit organization. Built with Next.js and deployed on Vercel, delivering lightning-fast performance and optimal SEO for mission-critical outreach.',
     link: {
       href: 'https://www.thecwf.org/',
       label: 'thecwf.org',
@@ -81,7 +81,7 @@ const projects = [
   {
     name: 'Discord for Invision Community',
     description:
-      'Up your Invision Community with this all-in-one Discord integration and engagement application.',
+      'Seamless Discord integration for Invision Community platforms. Sync users, roles, and channels automatically while driving engagement through real-time notifications and unified member experiences.',
     link: {
       href: 'https://store.deschutesdesigngroup.com/buy/eaaa476c-201a-438a-8896-61898ae6fab1',
       label: 'store.deschutesdesigngroup.com',
@@ -91,35 +91,35 @@ const projects = [
   {
     name: 'Elios Fund',
     description:
-      'SaaS for residential and commercial lending for solar energy projects. Built with Laravel. Deployed to AWS Lambda.',
+      'Specialized SaaS platform for solar energy project financing. Streamlines residential and commercial lending workflows with Laravel, deployed serverless on AWS Lambda for infinite scalability.',
     link: { href: 'https://eliosfund.com', label: 'eliosfund.com' },
     logo: logoElios,
   },
   {
     name: 'Nitro Energy',
     description:
-      'SaaS for a high performing solar sales company to manage sales pipelines. Built with Laravel. Deployed to AWS.',
+      'High-performance sales pipeline management SaaS for the solar industry. Built with Laravel and deployed on AWS, empowering sales teams to close deals faster with intelligent lead tracking and automation.',
     link: { href: 'https://nitroenergy.com', label: 'nitroenergy.com' },
     logo: logoNitro,
   },
   {
     name: "Levi's Sawmill",
     description:
-      'Landing page for a local sawmill built with Laravel, Inertia.js and Vue.js.',
+      'Modern, responsive landing page for a local sawmill business. Built with Laravel, Inertia.js, and Vue.js to showcase products and services with a smooth, app-like user experience.',
     link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
     logo: logoVue,
   },
   {
     name: 'PERSCOM Personnel Management System',
     description:
-      'Personnel management SaaS targeting the first-responder community. Built using the TALL stack and deployed to AWS with Laravel Forge.',
+      'Comprehensive personnel management SaaS designed for first-responder organizations. Built with the TALL stack and deployed on AWS via Laravel Forge, streamlining rosters, certifications, and operations.',
     link: { href: 'https://perscom.io', label: 'perscom.io' },
     logo: logoPerscom,
   },
   {
     name: 'Community Hive WP Plugin',
     description:
-      'Wordpress plugin that integrates a community with the Community Hive service.',
+      'WordPress plugin enabling seamless integration with the Community Hive service. Sync users, content, and engagement metrics between your WordPress site and community platform effortlessly.',
     link: {
       href: 'https://github.com/DeschutesDesignGroupLLC/wordpress-community-hive',
       label: 'github.com',
@@ -129,7 +129,7 @@ const projects = [
   {
     name: 'AWS Simple Email Service for Invision Community',
     description:
-      'Invision Community 4 application that enables transactional email via the AWS Simple Email Service API.',
+      'Enterprise-grade email integration for Invision Community platforms. Leverage AWS SES for reliable, scalable transactional emails with advanced deliverability, tracking, and cost optimization.',
     link: {
       href: 'https://store.deschutesdesigngroup.com/buy/0182a1f0-48ea-4438-9b40-293441be9f85',
       label: 'store.deschutesdesigngroup.com',
@@ -139,7 +139,7 @@ const projects = [
   {
     name: 'Wordpress Plugin Template',
     description:
-      'Starter kit for your next WP Plugin utilizing Roots Acorn which gives you access to the Laravel framework.',
+      "Modern WordPress plugin starter kit powered by Roots Acorn. Brings Laravel's elegant architecture, dependency injection, and blade templating to WordPress plugin development.",
     link: {
       href: 'http://github.com/DeschutesDesignGroupLLC/wordpress-plugin-template',
       label: 'github.com',

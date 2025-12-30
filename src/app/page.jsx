@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import clsx from 'clsx';
 
 import { Button } from '@/components/Button';
 import { Card } from '@/components/Card';
@@ -11,14 +10,11 @@ import {
   XIcon,
   MailIcon,
 } from '@/components/SocialIcons';
-import elios from '@/images/photos/elios.png';
-import perscom from '@/images/photos/perscom.png';
-import levissawmill from '@/images/photos/levissawmill.png';
-import nitro from '@/images/photos/nitro.png';
 import { getAllArticles } from '@/lib/articles';
 import { formatDate } from '@/lib/formatDate';
 import { Input } from '@headlessui/react';
 import { Testimonials } from '@/components/Testimonials';
+import { Photos } from '@/components/Photos';
 
 function BriefcaseIcon(props) {
   return (
@@ -133,7 +129,9 @@ function Role({ role }) {
       <dl className='flex flex-auto flex-wrap gap-x-2'>
         <dt className='sr-only'>Company</dt>
         <dd className='w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100'>
-          <a href={role.url}>{role.company}</a>
+          <a href={role.url} target='_blank'>
+            {role.company}
+          </a>
         </dd>
         <dt className='sr-only'>Role</dt>
         <dd className='text-xs text-zinc-500 dark:text-zinc-400'>
@@ -160,10 +158,20 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'PERSCOM',
-      title: 'Lead Developer',
-      start: '2017',
-      url: 'https://perscom.io',
+      company: 'Leasecake',
+      title: 'Senior Software Engineer',
+      start: '2026',
+      url: 'https://leasecake.com',
+      end: {
+        label: 'Present',
+        dateTime: new Date().getFullYear().toString(),
+      },
+    },
+    {
+      company: 'REACT Studios™',
+      title: 'Project Design and Development',
+      start: '2025',
+      url: 'https://reactstudios.com',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
@@ -173,37 +181,48 @@ function Resume() {
       company: 'BQK & JJG Consulting LLC',
       title: 'VP of Engineering',
       start: '2023',
+      end: '2025',
       url: 'https://bkjgconsulting.com',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
     },
     {
       company: 'Elios Fund',
-      title: 'Lead Developer',
+      title: 'Software Development Lead',
       start: '2023',
+      end: '2025',
       url: 'https://eliosfund.com',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
     },
     {
       company: 'Nitro Energy',
-      title: 'Lead Developer',
+      title: 'Software Development Lead',
       start: '2023',
+      end: '2025',
       url: 'https://nitroenergy.com',
+    },
+    {
+      company: "Levi's Sawmill",
+      title: 'Software Development Lead',
+      start: '2022',
+      url: 'https://levissawmill.com',
+    },
+    {
+      company: 'PERSCOM',
+      title: 'Project Design and Development',
+      start: '2020',
+      url: 'https://perscom.io',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: "Levi's Sawmill",
-      title: 'Lead Design and Developer',
-      start: '2022',
-      url: 'https://levissawmill.com',
+      company: 'Deschutes Design Group LLC',
+      title: 'Owner',
+      start: '2017',
+      url: 'https://deschutesdesigngroup.com',
+      end: {
+        label: 'Present',
+        dateTime: new Date().getFullYear().toString(),
+      },
     },
   ];
 
@@ -230,39 +249,6 @@ function Resume() {
   );
 }
 
-function Photos() {
-  let rotations = [
-    'rotate-2',
-    '-rotate-2',
-    'rotate-2',
-    'rotate-2',
-    '-rotate-2',
-  ];
-
-  return (
-    <div className='mt-16 sm:mt-20'>
-      <div className='-my-4 flex justify-center gap-5 overflow-hidden pb-6 pt-4 sm:gap-8'>
-        {[elios, perscom, levissawmill, nitro].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-48 flex-none overflow-hidden rounded-xl bg-zinc-100 shadow-lg sm:h-60 sm:w-[24rem] sm:rounded-2xl dark:bg-zinc-800',
-              rotations[imageIndex % rotations.length]
-            )}
-          >
-            <Image
-              src={image}
-              alt='Recent project image'
-              sizes='(max-width: 640px) 12rem, 28rem'
-              className='absolute inset-0 h-full w-full object-cover'
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default async function Home() {
   let articles = (await getAllArticles()).slice(0, 4);
 
@@ -274,7 +260,7 @@ export default async function Home() {
             Software development and web application design agency
           </h1>
           <p className='mt-6 text-base text-zinc-600 dark:text-zinc-400'>
-            We’re passionate about creating standout web applications and
+            We're passionate about creating standout web applications and
             innovative web design ideas that truly resonate. Our friendly team
             is here to provide personalized services that will help your
             business shine in a competitive landscape.

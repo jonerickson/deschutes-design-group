@@ -7,6 +7,17 @@ module.exports = {
   darkMode: 'selector',
   plugins: [typographyPlugin],
   theme: {
+    extend: {
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        scroll: 'scroll 30s linear infinite',
+      },
+    },
     fontSize: {
       xs: ['0.8125rem', { lineHeight: '1.5rem' }],
       sm: ['0.875rem', { lineHeight: '1.5rem' }],
