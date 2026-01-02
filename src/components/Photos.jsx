@@ -8,6 +8,7 @@ import react from '@/images/photos/react.png';
 import elios from '@/images/photos/elios.png';
 import perscom from '@/images/photos/perscom.png';
 import levis from '@/images/photos/levis.png';
+import community from '@/images/photos/laravel-community.png';
 import nitro from '@/images/photos/nitro.png';
 import exergy from '@/images/photos/exergy.png';
 import { Button } from '@/components/Button';
@@ -23,14 +24,19 @@ export function Photos() {
       url: 'https://reactstudios.com',
     },
     {
+      image: levis,
+      title: "Levi's Sawmill",
+      url: 'https://levissawmill.com',
+    },
+    {
       image: perscom,
       title: 'PERSCOM',
       url: 'https://perscom.io',
     },
     {
-      image: levis,
-      title: "Levi's Sawmill",
-      url: 'https://levissawmill.com',
+      image: community,
+      title: 'Laravel Community',
+      url: 'https://laravel-community.com',
     },
     {
       image: nitro,
