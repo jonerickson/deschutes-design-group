@@ -11,6 +11,7 @@ import levis from '@/images/photos/levis.png';
 import community from '@/images/photos/laravel-community.png';
 import nitro from '@/images/photos/nitro.png';
 import exergy from '@/images/photos/exergy.png';
+import antioch from '@/images/photos/antioch.png';
 import { Button } from '@/components/Button';
 
 export function Photos() {
@@ -53,6 +54,11 @@ export function Photos() {
       title: 'Elios Fund',
       url: 'https://eliosfund.com',
     },
+    {
+      image: antioch,
+      title: 'Antioch Church',
+      url: 'https://antiochchurch.org',
+    },
   ];
 
   let rotations = [
@@ -86,8 +92,8 @@ export function Photos() {
   return (
     <>
       <div className='mt-16 sm:mt-20'>
-        <div className='-my-4 overflow-hidden pb-6 pt-4'>
-          <div className='hover:pause flex animate-scroll gap-5 sm:gap-8'>
+        <div className='-my-4 w-full overflow-hidden pb-6 pt-4'>
+          <div className='flex w-max animate-scroll hover:pause'>
             {duplicatedPhotos.map((photo, photoIndex) => (
               <div
                 key={photoIndex}
@@ -97,7 +103,8 @@ export function Photos() {
                 }}
                 className={clsx(
                   'relative aspect-[9/10] h-36 w-60 flex-none cursor-pointer overflow-hidden rounded-xl bg-zinc-100 shadow-lg transition-transform hover:scale-105 sm:h-60 sm:w-[24rem] sm:rounded-2xl dark:bg-zinc-800',
-                  rotations[photoIndex % rotations.length]
+                  rotations[photoIndex % rotations.length],
+                  'mr-5 sm:mr-8'
                 )}
               >
                 <Image

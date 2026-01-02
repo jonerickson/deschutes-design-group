@@ -1,11 +1,21 @@
 const typographyPlugin = require('@tailwindcss/typography');
 const typographyStyles = require('./typography');
+const plugin = require('tailwindcss/plugin');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'selector',
-  plugins: [typographyPlugin],
+  plugins: [
+    typographyPlugin,
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.pause': {
+          'animation-play-state': 'paused',
+        },
+      });
+    }),
+  ],
   theme: {
     extend: {
       keyframes: {
@@ -15,7 +25,7 @@ module.exports = {
         },
       },
       animation: {
-        scroll: 'scroll 30s linear infinite',
+        scroll: 'scroll 40s linear infinite',
       },
     },
     fontSize: {
