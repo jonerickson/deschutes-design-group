@@ -27,7 +27,8 @@ function SocialLink({ className, href, children, icon: Icon }) {
 
 export const metadata = {
   title: 'About',
-  description: 'We are Deschutes Design Group LLC.',
+  description:
+    'Deschutes Design Group is a software development and web design agency that partners with businesses to build high-performance digital products.',
 };
 
 export default function About() {
@@ -46,35 +47,40 @@ export default function About() {
         </div>
         <div className='lg:order-first lg:row-span-2'>
           <h1 className='text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100'>
-            We are Deschutes Design Group LLC. We love web development.
+            We build the software that powers your business.
           </h1>
           <div className='mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400'>
             <p>
-              We’re passionate about creating standout web applications and
-              innovative design ideas that truly resonate. Our friendly team is
-              here to provide personalized services that will help your business
-              shine in a competitive landscape.
+              Deschutes Design Group is a software development and web design
+              agency based in Central Oregon. We partner with startups,
+              established companies, and organizations to design, build, and
+              scale custom digital products that solve real business problems.
             </p>
             <p>
-              From the very first idea to the final touches, we build powerful,
-              adaptable web applications that are as unique as you are. By using
-              the latest technologies and best practices, we ensure your users
-              enjoy a seamless experience while helping your business thrive.
-              We’re excited to turn your vision into reality!
+              Our work spans full-stack web applications, marketing websites,
+              e-commerce platforms, and internal tools — built on modern
+              frameworks like Next.js, Laravel, and React. We focus on clean
+              architecture, performance, and maintainability so your investment
+              compounds over time rather than becoming technical debt.
             </p>
             <p>
-              Our team is also dedicated to helping you refine your online
-              presence. We’ll dive into your goals, review your current
-              strategies, and share tailored insights to elevate your digital
-              impact. With our support, you can achieve lasting growth and make
-              a meaningful impression online.
+              What sets us apart is how we work. We operate as an extension of
+              your team, not a vendor handing off a deliverable. From discovery
+              through launch and beyond, we stay closely aligned with your goals
+              and provide the strategic guidance needed to make confident
+              technology decisions.
             </p>
             <p>
-              We invite you to explore our projects page, where you can find
-              inspiration and see some of our latest work. Each project reflects
-              our commitment to creativity and excellence, showcasing how we
-              bring unique visions to life. Take a look and imagine what we
-              could create together!
+              Whether you need to ship a new product, modernize a legacy system,
+              or establish a stronger digital presence, we bring the technical
+              depth and design sensibility to make it happen. Take a look at our{' '}
+              <Link
+                href='/projects'
+                className='font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 transition hover:decoration-blue-600 dark:text-zinc-100 dark:decoration-zinc-600 dark:hover:decoration-blue-400'
+              >
+                projects
+              </Link>{' '}
+              to see what that looks like in practice.
             </p>
           </div>
         </div>

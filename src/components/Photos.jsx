@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { X, Loader2 } from 'lucide-react';
@@ -18,6 +18,38 @@ import { Button } from '@/components/Button';
 export function Photos() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragRef = useRef({ startX: 0, scrollLeft: 0, hasMoved: false });
+  const scrollRef = useRef(null);
+
+  const handlePointerDown = useCallback((e) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setIsDragging(true);
+    dragRef.current.startX = e.clientX;
+    dragRef.current.scrollLeft = el.scrollLeft;
+    dragRef.current.hasMoved = false;
+    el.setPointerCapture(e.pointerId);
+  }, []);
+
+  const handlePointerMove = useCallback(
+    (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - dragRef.current.startX;
+      if (Math.abs(dx) > 3) dragRef.current.hasMoved = true;
+      scrollRef.current.scrollLeft = dragRef.current.scrollLeft - dx;
+    },
+    [isDragging]
+  );
+
+  const handlePointerUp = useCallback(
+    (e) => {
+      if (!isDragging) return;
+      setIsDragging(false);
+      scrollRef.current?.releasePointerCapture(e.pointerId);
+    },
+    [isDragging]
+  );
 
   const photos = [
     {
@@ -98,12 +130,28 @@ export function Photos() {
   return (
     <>
       <div className='mt-16 sm:mt-20'>
-        <div className='-my-4 w-full overflow-hidden pb-6 pt-4'>
-          <div className='flex w-max animate-scroll hover:pause'>
+        <div
+          ref={scrollRef}
+          className={clsx(
+            'scrollbar-hide -my-4 w-full overflow-x-scroll pb-6 pt-4',
+            isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'
+          )}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+        >
+          <div
+            className={clsx(
+              'flex w-max animate-scroll hover:pause',
+              isDragging && '[animation-play-state:paused]'
+            )}
+          >
             {duplicatedPhotos.map((photo, photoIndex) => (
               <div
                 key={photoIndex}
                 onClick={() => {
+                  if (dragRef.current.hasMoved) return;
                   setIsLoading(true);
                   setSelectedPhoto(photos[photoIndex % photos.length]);
                 }}

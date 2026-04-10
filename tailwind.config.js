@@ -23,9 +23,19 @@ module.exports = {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
         },
+        'gradient-rotate': {
+          '0%': { '--gradient-angle': '0deg' },
+          '100%': { '--gradient-angle': '360deg' },
+        },
+        'pulse-glow': {
+          '0%, 100%': { opacity: '0.4' },
+          '50%': { opacity: '0.8' },
+        },
       },
       animation: {
         scroll: 'scroll 40s linear infinite',
+        'gradient-rotate': 'gradient-rotate 6s linear infinite',
+        'pulse-glow': 'pulse-glow 3s ease-in-out infinite',
       },
     },
     fontSize: {
