@@ -11,6 +11,7 @@ import levis from '@/images/photos/levis.png';
 import community from '@/images/photos/laravel-community.png';
 import nitro from '@/images/photos/nitro.png';
 import exergy from '@/images/photos/exergy.png';
+import riverflow from '@/images/photos/riverflow.png';
 import antioch from '@/images/photos/antioch.png';
 import { Button } from '@/components/Button';
 
@@ -48,6 +49,11 @@ export function Photos() {
       image: exergy,
       title: 'Exergy Health',
       url: 'https://www.exergyhealth.org/',
+    },
+    {
+      image: riverflow,
+      title: 'RiverFlow Psychology',
+      url: 'https://bendpsychologist.com',
     },
     {
       image: elios,
