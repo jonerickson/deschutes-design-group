@@ -46,7 +46,7 @@ export function ContactUsForm({ siteKey, sendMessage }) {
             autoFocus
             autoComplete='name'
             autoCapitalize='words'
-            className='w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/10'
+            className='w-full flex-auto appearance-none rounded-md border border-border bg-card px-3 py-[calc(theme(spacing.2)-1px)] text-foreground placeholder:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm'
           />
         </div>
         <div>
@@ -57,19 +57,19 @@ export function ContactUsForm({ siteKey, sendMessage }) {
             aria-label='Email address'
             required
             autoComplete='email'
-            className='w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/10'
+            className='w-full flex-auto appearance-none rounded-md border border-border bg-card px-3 py-[calc(theme(spacing.2)-1px)] text-foreground placeholder:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm'
           />
         </div>
         <div>
           <Textarea
             type='message'
             name='message'
-            placeholder='Message'
+            placeholder="Tell us about your project — what you're building, your timeline, and your stack if you have one."
             aria-label='Message'
             required
             rows={4}
             autoCapitalize='sentences'
-            className='w-full flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-600/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/10'
+            className='w-full flex-auto appearance-none rounded-md border border-border bg-card px-3 py-[calc(theme(spacing.2)-1px)] text-foreground placeholder:text-muted-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:text-sm'
           />
         </div>
         {siteKey && (
@@ -90,8 +90,8 @@ export function ContactUsForm({ siteKey, sendMessage }) {
           </Button>
         </div>
         {sent && (
-          <div className='text-sm text-zinc-600 dark:text-zinc-400'>
-            Your message has been successfully sent.
+          <div className='text-sm text-muted-foreground'>
+            Thanks — your message is on its way. We&apos;ll be in touch shortly.
           </div>
         )}
       </div>

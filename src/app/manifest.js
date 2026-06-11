@@ -3,11 +3,11 @@ export default function manifest() {
     name: 'Deschutes Design Group LLC',
     short_name: 'DDG',
     description:
-      'A premier web development firm located in the picturesque city of Bend, Oregon. Our expertise lies in crafting exceptional web applications and revolutionary web design concepts.',
+      'A premier web development firm located in the picturesque city of Bozeman, Montana. Our expertise lies in crafting exceptional web applications and revolutionary web design concepts.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#fff',
-    theme_color: '#fff',
+    background_color: '#0a0a0a',
+    theme_color: '#0a0a0a',
     icons: [
       {
         src: '/favicon.ico',

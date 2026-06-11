@@ -3,6 +3,114 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* ------------------------------------------------------------------ *
+ * Design tokens — Deschutes Design Group
+ * Dark-first, monochrome canvas with a single electric-blue spark.
+ * shadcn-style HSL variables consumed by tailwind.config.js.
+ * ------------------------------------------------------------------ */
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Light theme (secondary) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+
+    --primary: 217 91% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 89%;
+    --ring: 217 91% 55%;
+
+    --radius: 0.625rem;
+
+    /* Spark — the one accent that earns its keep */
+    --spark: 217 91% 60%;
+    --spark-soft: 217 91% 60%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    /* Dark theme (primary / hero experience) */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 5.5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 4.5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 16%;
+    --ring: 217 91% 60%;
+
+    --spark: 217 91% 60%;
+    --spark-soft: 213 94% 68%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1,
+      'ss01' 1;
+  }
+
+  /* Tighter, more confident headline rendering */
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.02em;
+  }
+
+  /* Visible keyboard focus on the dark canvas */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Respect reduced-motion globally — decorative motion collapses to instant */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
 @property --gradient-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -16,5 +124,58 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Gradient text — the spark, used sparingly on key words */
+  .text-gradient {
+    background-image: linear-gradient(
+      180deg,
+      hsl(var(--foreground)) 0%,
+      hsl(var(--foreground) / 0.55) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-spark {
+    background-image: linear-gradient(
+      90deg,
+      hsl(var(--spark)) 0%,
+      hsl(var(--spark-soft)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Subtle dot + line grids for backgrounds (Vercel/Linear style) */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        hsl(var(--border) / 0.5) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .bg-dot {
+    background-image: radial-gradient(
+      hsl(var(--border) / 0.55) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+  /* Radial fade mask — fades a background out toward the edges */
+  .mask-radial-faded {
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(
+      ellipse at center,
+      black 0%,
+      transparent 75%
+    );
+  }
+  .mask-b-faded {
+    mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 90%);
   }
 }

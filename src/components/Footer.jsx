@@ -1,57 +1,148 @@
 import Link from 'next/link';
 
 import { ContainerInner, ContainerOuter } from '@/components/Container';
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+  MailIcon,
+} from '@/components/SocialIcons';
 
-function NavLink({ href, children }) {
+function NavLink({ href, external, children }) {
   return (
     <Link
       href={href}
-      className='transition hover:text-blue-600 dark:hover:text-blue-400'
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      className='text-sm text-muted-foreground transition hover:text-foreground'
     >
       {children}
     </Link>
   );
 }
 
+function SocialLink({ icon: Icon, ...props }) {
+  return (
+    <Link className='group -m-1 p-1' {...props}>
+      <Icon className='h-5 w-5 fill-muted-foreground transition group-hover:fill-foreground' />
+    </Link>
+  );
+}
+
+const columns = [
+  {
+    heading: 'Company',
+    links: [
+      { label: 'Work', href: '/projects' },
+      { label: 'Technology', href: '/technology' },
+      { label: 'About', href: '/about' },
+      { label: 'Articles', href: '/articles' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { label: 'Support', href: '/support' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    heading: 'External',
+    links: [
+      {
+        label: 'Store',
+        href: 'https://store.deschutesdesigngroup.com',
+        external: true,
+      },
+      {
+        label: 'Client Portal',
+        href: 'https://portal.deschutesdesigngroup.com',
+        external: true,
+      },
+      {
+        label: 'Affiliate Program',
+        href: 'https://store.deschutesdesigngroup.com/affiliates',
+        external: true,
+      },
+    ],
+  },
+];
+
 export function Footer() {
   return (
-    <footer className='mt-32 flex-none'>
+    <footer
+      className='mt-32 flex-none border-t border-border'
+      aria-label='Footer'
+    >
       <ContainerOuter>
-        <div className='border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40'>
-          <ContainerInner>
-            <div className='flex flex-col items-center justify-between gap-6 md:items-start'>
-              <div className='flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200'>
-                <NavLink href='/about'>About</NavLink>
-                <NavLink href='/projects'>Projects</NavLink>
-                <NavLink href='/technology'>Technology</NavLink>
-                <NavLink
-                  href='https://store.deschutesdesigngroup.com'
-                  target='_blank'
-                >
-                  Store
-                </NavLink>
-                <NavLink
-                  href='https://store.deschutesdesigngroup.com/affiliates'
-                  target='_blank'
-                >
-                  Affiliate Program
-                </NavLink>
-                <NavLink
-                  href='https://portal.deschutesdesigngroup.com'
-                  target='_blank'
-                >
-                  Clients
-                </NavLink>
-                <NavLink href='/support'>Support</NavLink>
-                <NavLink href='/contact'>Contact</NavLink>
+        <ContainerInner>
+          <div className='py-16'>
+            <div className='grid grid-cols-1 gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]'>
+              <div className='max-w-xs'>
+                <p className='text-base font-semibold tracking-tight text-foreground'>
+                  Deschutes Design Group
+                </p>
+                <p className='mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground'>
+                  We build software on the web
+                </p>
+                <p className='mt-2 text-sm text-muted-foreground'>
+                  Bozeman, Montana
+                </p>
+                <div className='mt-5 flex gap-5'>
+                  <SocialLink
+                    href='https://x.com/jonericksonx'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label='Follow on X'
+                    icon={XIcon}
+                  />
+                  <SocialLink
+                    href='https://github.com/jonerickson'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label='Follow on GitHub'
+                    icon={GitHubIcon}
+                  />
+                  <SocialLink
+                    href='https://linkedin.com/in/jonericksonx'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    aria-label='Follow on LinkedIn'
+                    icon={LinkedInIcon}
+                  />
+                  <SocialLink
+                    href='mailto:info@deschutesdesigngroup.com'
+                    aria-label='Contact us by email'
+                    icon={MailIcon}
+                  />
+                </div>
               </div>
-              <p className='text-sm text-zinc-400 dark:text-zinc-500'>
+
+              {columns.map((column) => (
+                <div key={column.heading}>
+                  <h3 className='font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground'>
+                    {column.heading}
+                  </h3>
+                  <ul className='mt-4 flex flex-col gap-3'>
+                    {column.links.map((link) => (
+                      <li key={link.label}>
+                        <NavLink href={link.href} external={link.external}>
+                          {link.label}
+                        </NavLink>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            <div className='mt-14 border-t border-border pt-8'>
+              <p className='text-sm text-muted-foreground'>
                 &copy; {new Date().getFullYear()} Deschutes Design Group LLC.
                 All rights reserved.
               </p>
             </div>
-          </ContainerInner>
-        </div>
+          </div>
+        </ContainerInner>
       </ContainerOuter>
     </footer>
   );

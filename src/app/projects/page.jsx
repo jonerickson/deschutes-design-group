@@ -1,9 +1,13 @@
 import Image from 'next/image';
 
-import { Card } from '@/components/Card';
-import { SimpleLayout } from '@/components/SimpleLayout';
+import { Container } from '@/components/Container';
+import { Button } from '@/components/Button';
+import { Card } from '@/components/ui/Card';
+import { Eyebrow } from '@/components/ui/Eyebrow';
+import { GridBackground, SparkGlow } from '@/components/ui/GridBackground';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import logoTf from '@/images/logos/terraform.svg';
-import logoExergy from '@/images/logos/exergy.png';
+import logoExergy from '@/images/logos/exergy.svg';
 import logoDiscord from '@/images/logos/discord.png';
 import logoNitro from '@/images/logos/nitro.svg';
 import logoPerscom from '@/images/logos/perscom.svg';
@@ -19,7 +23,40 @@ import logoNext from '@/images/logos/nextjs.svg';
 
 const projects = [
   {
+    name: 'REACT Studios™',
+    category: 'SaaS Platforms',
+    description:
+      'A feature-rich gaming community platform combining forums, subscriptions, content management, and e-commerce. Built with Laravel and React to deliver a blazing-fast, immersive member experience.',
+    link: { href: 'https://reactstudios.com', label: 'reactstudios.com' },
+    logo: logoReactStudios,
+  },
+  {
+    name: 'Elios Fund',
+    category: 'SaaS Platforms',
+    description:
+      'Specialized SaaS platform for solar energy project financing. Streamlines residential and commercial lending workflows with Laravel, deployed serverless on AWS Lambda for infinite scalability.',
+    link: { href: 'https://eliosfund.com', label: 'eliosfund.com' },
+    logo: logoElios,
+  },
+  {
+    name: 'Nitro Energy',
+    category: 'SaaS Platforms',
+    description:
+      'High-performance sales pipeline management SaaS for the solar industry. Built with Laravel and deployed on AWS, empowering sales teams to close deals faster with intelligent lead tracking and automation.',
+    link: { href: 'https://nitroenergy.com', label: 'nitroenergy.com' },
+    logo: logoNitro,
+  },
+  {
+    name: 'PERSCOM Personnel Management System',
+    category: 'SaaS Platforms',
+    description:
+      'Comprehensive personnel management SaaS designed for first-responder organizations. Built with the TALL stack and deployed on AWS via Laravel Forge, streamlining rosters, certifications, and operations.',
+    link: { href: 'https://perscom.io', label: 'perscom.io' },
+    logo: logoPerscom,
+  },
+  {
     name: 'Laravel Community',
+    category: 'Open Source & Infrastructure',
     description:
       'A comprehensive open-source platform unifying e-commerce, user marketplace, community forums, and CMS into a single cohesive ecosystem. The all-in-one solution for building thriving online communities.',
     link: {
@@ -29,27 +66,8 @@ const projects = [
     logo: logoLaravel,
   },
   {
-    name: 'REACT Studios™',
-    description:
-      'A feature-rich gaming community platform combining forums, subscriptions, content management, and e-commerce. Built with Laravel and React to deliver a blazing-fast, immersive member experience.',
-    link: {
-      href: 'https://reactstudios.com',
-      label: 'reactstudios.com',
-    },
-    logo: logoReactStudios,
-  },
-  {
-    name: 'API Playground',
-    description:
-      'Open-source reference implementations for building and deploying production-ready APIs. Explore patterns and best practices across Laravel, Express, FastAPI, and more.',
-    link: {
-      href: 'https://github.com/jonerickson/api-playground',
-      label: 'github.com',
-    },
-    logo: logoOpenApi,
-  },
-  {
     name: 'Deploy Laravel with EKS and Terraform',
+    category: 'Open Source & Infrastructure',
     description:
       'Production-ready infrastructure-as-code template for deploying Laravel applications to AWS EKS. Includes Terraform modules, Helm charts, and CI/CD pipelines for enterprise-grade Kubernetes deployments.',
     link: {
@@ -59,27 +77,30 @@ const projects = [
     logo: logoTf,
   },
   {
-    name: 'Exergy Health',
+    name: 'API Playground',
+    category: 'Open Source & Infrastructure',
     description:
-      'Modern medical practice website delivering a 360° approach to personalized healthcare. Built with Laravel and Statamic CMS, deployed on Laravel Cloud for seamless content management and patient engagement.',
+      'Open-source reference implementations for building and deploying production-ready APIs. Explore patterns and best practices across Laravel, Express, FastAPI, and more.',
     link: {
-      href: 'https://www.exergyhealth.org/',
-      label: 'exergyhealth.org',
+      href: 'https://github.com/jonerickson/api-playground',
+      label: 'github.com',
     },
-    logo: logoExergy,
+    logo: logoOpenApi,
   },
   {
-    name: 'Campbell Wallace Foundation',
+    name: 'WordPress Plugin Template',
+    category: 'Open Source & Infrastructure',
     description:
-      'Clean, accessible website for a 501(c)(3) nonprofit organization. Built with Next.js and deployed on Vercel, delivering lightning-fast performance and optimal SEO for mission-critical outreach.',
+      "Modern WordPress plugin starter kit powered by Roots Acorn. Brings Laravel's elegant architecture, dependency injection, and blade templating to WordPress plugin development.",
     link: {
-      href: 'https://www.thecwf.org/',
-      label: 'thecwf.org',
+      href: 'http://github.com/DeschutesDesignGroupLLC/wordpress-plugin-template',
+      label: 'github.com',
     },
-    logo: logoNext,
+    logo: logoWordpress,
   },
   {
     name: 'Discord for Invision Community',
+    category: 'Integrations',
     description:
       'Seamless Discord integration for Invision Community platforms. Sync users, roles, and channels automatically while driving engagement through real-time notifications and unified member experiences.',
     link: {
@@ -89,35 +110,8 @@ const projects = [
     logo: logoDiscord,
   },
   {
-    name: 'Elios Fund',
-    description:
-      'Specialized SaaS platform for solar energy project financing. Streamlines residential and commercial lending workflows with Laravel, deployed serverless on AWS Lambda for infinite scalability.',
-    link: { href: 'https://eliosfund.com', label: 'eliosfund.com' },
-    logo: logoElios,
-  },
-  {
-    name: 'Nitro Energy',
-    description:
-      'High-performance sales pipeline management SaaS for the solar industry. Built with Laravel and deployed on AWS, empowering sales teams to close deals faster with intelligent lead tracking and automation.',
-    link: { href: 'https://nitroenergy.com', label: 'nitroenergy.com' },
-    logo: logoNitro,
-  },
-  {
-    name: "Levi's Sawmill",
-    description:
-      'Modern, responsive landing page for a local sawmill business. Built with Laravel, Inertia.js, and Vue.js to showcase products and services with a smooth, app-like user experience.',
-    link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
-    logo: logoVue,
-  },
-  {
-    name: 'PERSCOM Personnel Management System',
-    description:
-      'Comprehensive personnel management SaaS designed for first-responder organizations. Built with the TALL stack and deployed on AWS via Laravel Forge, streamlining rosters, certifications, and operations.',
-    link: { href: 'https://perscom.io', label: 'perscom.io' },
-    logo: logoPerscom,
-  },
-  {
     name: 'Community Hive WP Plugin',
+    category: 'Integrations',
     description:
       'WordPress plugin enabling seamless integration with the Community Hive service. Sync users, content, and engagement metrics between your WordPress site and community platform effortlessly.',
     link: {
@@ -128,6 +122,7 @@ const projects = [
   },
   {
     name: 'AWS Simple Email Service for Invision Community',
+    category: 'Integrations',
     description:
       'Enterprise-grade email integration for Invision Community platforms. Leverage AWS SES for reliable, scalable transactional emails with advanced deliverability, tracking, and cost optimization.',
     link: {
@@ -137,73 +132,160 @@ const projects = [
     logo: logoAws,
   },
   {
-    name: 'Wordpress Plugin Template',
+    name: 'Exergy Health',
+    category: 'SaaS Platforms',
     description:
-      "Modern WordPress plugin starter kit powered by Roots Acorn. Brings Laravel's elegant architecture, dependency injection, and blade templating to WordPress plugin development.",
-    link: {
-      href: 'http://github.com/DeschutesDesignGroupLLC/wordpress-plugin-template',
-      label: 'github.com',
-    },
-    logo: logoWordpress,
+      'A functional medicine platform delivering a 360° approach to personalized healthcare — finding and fixing the root cause. Built on Laravel with a Statamic-powered content engine and deployed on Laravel Cloud, pairing patient engagement with seamless content management.',
+    link: { href: 'https://www.exergyhealth.org/', label: 'exergyhealth.org' },
+    logo: logoExergy,
+  },
+  {
+    name: 'Campbell Wallace Foundation',
+    category: 'Sites',
+    description:
+      'Clean, accessible website for a 501(c)(3) nonprofit organization. Built with Next.js and deployed on Vercel, delivering lightning-fast performance and optimal SEO for mission-critical outreach.',
+    link: { href: 'https://www.thecwf.org/', label: 'thecwf.org' },
+    logo: logoNext,
+  },
+  {
+    name: "Levi's Sawmill",
+    category: 'Sites',
+    description:
+      'Modern, responsive landing page for a local sawmill business. Built with Laravel, Inertia.js, and Vue.js to showcase products and services with a smooth, app-like user experience.',
+    link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
+    logo: logoVue,
   },
 ];
 
-function LinkIcon(props) {
+const categoryOrder = [
+  'SaaS Platforms',
+  'Open Source & Infrastructure',
+  'Integrations',
+  'Sites',
+];
+
+export const metadata = {
+  title: 'Work',
+  description:
+    'A look at the platforms, products, and tools we have engineered — SaaS applications, infrastructure, integrations, and the sites that front them. Real software, in production.',
+  alternates: { canonical: '/projects' },
+  openGraph: {
+    title: "Software we've shipped — Deschutes Design Group LLC",
+    description:
+      'A look at the platforms, products, and tools we have engineered — SaaS applications, infrastructure, integrations, and the sites that front them. Real software, in production.',
+    url: '/projects',
+  },
+};
+
+function ProjectCard({ project }) {
+  const isSvg =
+    typeof project.logo === 'object' &&
+    typeof project.logo.src === 'string' &&
+    project.logo.src.endsWith('.svg');
+
   return (
-    <svg viewBox='0 0 24 24' aria-hidden='true' {...props}>
-      <path
-        d='M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z'
-        fill='currentColor'
-      />
-    </svg>
+    <li>
+      <Card hover className='group flex h-full flex-col p-6'>
+        <div className='flex h-12 w-auto items-center justify-start'>
+          <Image
+            src={project.logo}
+            alt={`${project.name} logo`}
+            className='h-8 w-auto'
+            sizes='32px'
+            {...(isSvg ? { unoptimized: true } : {})}
+          />
+        </div>
+        <h3 className='mt-6 text-base font-semibold tracking-tight text-foreground'>
+          <a
+            href={project.link.href}
+            target='_blank'
+            rel='noreferrer'
+            className='transition-colors hover:text-spark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+          >
+            {project.name}
+          </a>
+        </h3>
+        <p className='mt-2 flex-1 text-sm leading-relaxed text-muted-foreground'>
+          {project.description}
+        </p>
+        <p className='mt-6 flex items-center font-mono text-sm text-muted-foreground transition-colors group-hover:text-spark'>
+          <span>{project.link.label}</span>
+          <ArrowUpRight className='ml-1 h-4 w-4 flex-none' />
+        </p>
+      </Card>
+    </li>
   );
 }
 
-export const metadata = {
-  title: 'Projects',
-  description: 'Our proudest, most recent work.',
-};
-
 export default function Projects() {
   return (
-    <SimpleLayout
-      title="Some clients we've helped and projects we've developed."
-      intro='We have a diverse array of client markets, each with its own unique technology needs. Our goal is simple: we want to match the right technology to the right job, helping your business thrive and succeed.'
-    >
-      <ul
-        role='list'
-        className='grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'
-      >
-        {projects.map((project) => {
-          return (
-            <Card as='li' key={project.name}>
-              <div className='relative z-10 flex h-12 w-auto items-center justify-center'>
-                {project.logoType !== undefined &&
-                project.logoType === 'icon' ? (
-                  <project.logo className='size-10 text-zinc-700 dark:text-zinc-100' />
-                ) : (
-                  <Image
-                    src={project.logo}
-                    alt={`${project.name} logo`}
-                    className='h-8 w-auto'
-                    unoptimized
-                  />
-                )}
-              </div>
-              <h2 className='mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100'>
-                <Card.Link href={project.link.href} target='_blank'>
-                  {project.name}
-                </Card.Link>
-              </h2>
-              <Card.Description>{project.description}</Card.Description>
-              <p className='relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-blue-600 dark:text-zinc-200'>
-                <LinkIcon className='h-6 w-6 flex-none' target='_blank' />
-                <span className='ml-2'>{project.link.label}</span>
-              </p>
-            </Card>
-          );
-        })}
-      </ul>
-    </SimpleLayout>
+    <>
+      {/* Hero */}
+      <section className='relative overflow-hidden border-b border-border'>
+        <GridBackground variant='dot' fade='radial' className='opacity-70' />
+        <SparkGlow className='-top-40 left-1/3 h-96 w-96' />
+        <Container className='relative py-20 sm:py-28'>
+          <div className='max-w-3xl'>
+            <Eyebrow className='animate-fade-up'>Selected work</Eyebrow>
+            <h1 className='mt-6 text-5xl font-semibold tracking-tight sm:text-6xl'>
+              <span className='text-gradient'>Software we&apos;ve </span>
+              <span className='text-gradient-spark'>shipped</span>
+              <span className='text-gradient'>.</span>
+            </h1>
+            <p className='mt-6 max-w-2xl animate-fade-up text-lg leading-relaxed text-muted-foreground [animation-delay:80ms]'>
+              A look at the platforms, products, and tools we&apos;ve engineered
+              — SaaS applications, infrastructure, integrations, and the sites
+              that front them. Real software, in production.
+            </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Grouped projects */}
+      <Container className='py-20 sm:py-24'>
+        <div className='space-y-20'>
+          {categoryOrder.map((category) => {
+            const items = projects.filter((p) => p.category === category);
+            if (items.length === 0) return null;
+            return (
+              <section key={category}>
+                <div className='flex items-baseline justify-between'>
+                  <Eyebrow>{category}</Eyebrow>
+                  <span className='font-mono text-xs tabular-nums text-muted-foreground'>
+                    {String(items.length).padStart(2, '0')}
+                  </span>
+                </div>
+                <ul
+                  role='list'
+                  className='mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
+                >
+                  {items.map((project) => (
+                    <ProjectCard key={project.name} project={project} />
+                  ))}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
+      </Container>
+
+      {/* CTA */}
+      <Container className='pb-24'>
+        <Card className='relative overflow-hidden px-6 py-14 text-center sm:px-8'>
+          <SparkGlow className='left-1/2 top-0 h-56 w-56 -translate-x-1/2' />
+          <div className='relative'>
+            <h2 className='text-gradient text-3xl font-semibold tracking-tight sm:text-4xl'>
+              Your product could be next.
+            </h2>
+            <div className='mt-6 flex justify-center'>
+              <Button href='/contact' size='lg'>
+                Start a project
+                <ArrowRight className='h-4 w-4' />
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </Container>
+    </>
   );
 }

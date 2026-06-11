@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -14,8 +14,25 @@ import {
 import clsx from 'clsx';
 
 import { Container } from '@/components/Container';
+import { Button } from '@/components/Button';
 import logoImageLight from '@/images/logo.png';
 import logoImageDark from '@/images/logo_dark.png';
+
+const navigation = [
+  { label: 'Work', href: '/projects' },
+  { label: 'Technology', href: '/technology' },
+  { label: 'About', href: '/about' },
+  {
+    label: 'Store',
+    href: 'https://store.deschutesdesigngroup.com',
+    external: true,
+  },
+  {
+    label: 'Clients',
+    href: 'https://portal.deschutesdesigngroup.com',
+    external: true,
+  },
+];
 
 function CloseIcon(props) {
   return (
@@ -78,10 +95,15 @@ function MoonIcon(props) {
   );
 }
 
-function MobileNavItem({ href, children }) {
+function MobileNavItem({ href, external, children }) {
   return (
     <li>
-      <PopoverButton as={Link} href={href} className='block py-2'>
+      <PopoverButton
+        as={Link}
+        href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        className='block py-2 text-muted-foreground transition hover:text-foreground'
+      >
         {children}
       </PopoverButton>
     </li>
@@ -91,68 +113,68 @@ function MobileNavItem({ href, children }) {
 function MobileNavigation(props) {
   return (
     <Popover {...props}>
-      <PopoverButton className='group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20'>
+      <PopoverButton className='group flex items-center rounded-full border border-border bg-card/70 px-4 py-2 text-sm font-medium text-foreground backdrop-blur transition hover:border-spark/40'>
         Menu
-        <ChevronDownIcon className='ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400' />
+        <ChevronDownIcon className='ml-3 h-auto w-2 stroke-muted-foreground group-hover:stroke-foreground' />
       </PopoverButton>
       <PopoverBackdrop
         transition
-        className='fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm duration-150 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-black/80'
+        className='fixed inset-0 z-50 bg-black/60 backdrop-blur-sm duration-150 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in'
       />
       <PopoverPanel
         focus
         transition
-        className='fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800'
+        className='fixed inset-x-4 top-8 z-50 origin-top rounded-2xl border border-border bg-popover p-8 ring-1 ring-border duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in'
       >
         <div className='flex flex-row-reverse items-center justify-between'>
           <PopoverButton aria-label='Close menu' className='-m-1 p-1'>
-            <CloseIcon className='h-6 w-6 text-zinc-500 dark:text-zinc-400' />
+            <CloseIcon className='h-6 w-6 text-muted-foreground' />
           </PopoverButton>
-          <h2 className='text-sm font-medium text-zinc-600 dark:text-zinc-400'>
+          <h2 className='font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground'>
             Navigation
           </h2>
         </div>
         <nav className='mt-6'>
-          <ul className='-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
-            <MobileNavItem href='/about'>About</MobileNavItem>
-            <MobileNavItem href='/projects'>Projects</MobileNavItem>
-            <MobileNavItem href='/technology'>Technology</MobileNavItem>
-            <MobileNavItem
-              href='https://store.deschutesdesigngroup.com'
-              target='_blank'
-            >
-              Store
-            </MobileNavItem>
-            <MobileNavItem
-              href='https://portal.deschutesdesigngroup.com'
-              target='_blank'
-            >
-              Clients
-            </MobileNavItem>
+          <ul className='-my-2 divide-y divide-border text-base text-foreground'>
+            {navigation.map((item) => (
+              <MobileNavItem
+                key={item.label}
+                href={item.href}
+                external={item.external}
+              >
+                {item.label}
+              </MobileNavItem>
+            ))}
+            <MobileNavItem href='/support'>Support</MobileNavItem>
+            <MobileNavItem href='/contact'>Contact</MobileNavItem>
           </ul>
+          <PopoverButton as={Link} href='/contact' className='mt-6 block'>
+            <Button className='w-full'>Start a project</Button>
+          </PopoverButton>
         </nav>
       </PopoverPanel>
     </Popover>
   );
 }
 
-function NavItem({ href, children }) {
+function NavItem({ href, external, children }) {
   let isActive = usePathname() === href;
 
   return (
     <li>
       <Link
         href={href}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         className={clsx(
           'relative block px-3 py-2 transition',
           isActive
-            ? 'text-blue-600 dark:text-blue-400'
-            : 'hover:text-blue-600 dark:hover:text-blue-400'
+            ? 'text-foreground'
+            : 'text-muted-foreground hover:text-foreground'
         )}
       >
         {children}
         {isActive && (
-          <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-600/0 via-blue-600/40 to-blue-600/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0' />
+          <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-spark/0 via-spark/50 to-spark/0' />
         )}
       </Link>
     </li>
@@ -161,17 +183,13 @@ function NavItem({ href, children }) {
 
 function DesktopNavigation(props) {
   return (
-    <nav {...props}>
-      <ul className='flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10'>
-        <NavItem href='/about'>About</NavItem>
-        <NavItem href='/projects'>Projects</NavItem>
-        <NavItem href='/technology'>Technology</NavItem>
-        <NavItem href='https://store.deschutesdesigngroup.com' target='_blank'>
-          Store
-        </NavItem>
-        <NavItem href='https://portal.deschutesdesigngroup.com' target='_blank'>
-          Clients
-        </NavItem>
+    <nav aria-label='Main' {...props}>
+      <ul className='flex rounded-full border border-border bg-card/70 px-3 text-sm font-medium backdrop-blur'>
+        {navigation.map((item) => (
+          <NavItem key={item.label} href={item.href} external={item.external}>
+            {item.label}
+          </NavItem>
+        ))}
       </ul>
     </nav>
   );
@@ -190,24 +208,16 @@ function ThemeToggle() {
     <button
       type='button'
       aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className='group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20'
+      className='group rounded-full border border-border bg-card/70 px-3 py-2 backdrop-blur transition hover:border-spark/40'
       onClick={() => setTheme(otherTheme)}
     >
-      <SunIcon className='h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-blue-50 [@media(prefers-color-scheme:dark)]:stroke-blue-600 [@media(prefers-color-scheme:dark)]:group-hover:fill-blue-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600' />
-      <MoonIcon className='hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-blue-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-blue-600' />
+      <SunIcon className='h-5 w-5 fill-muted stroke-muted-foreground transition group-hover:stroke-foreground dark:hidden' />
+      <MoonIcon className='hidden h-5 w-5 fill-muted stroke-muted-foreground transition group-hover:stroke-foreground dark:block' />
     </button>
   );
 }
 
-function clamp(number, a, b) {
-  let min = Math.min(a, b);
-  let max = Math.max(a, b);
-  return Math.min(Math.max(number, min), max);
-}
-
 function Logo({ className, ...props }) {
-  let { resolvedTheme, setTheme } = useTheme();
-
   return (
     <Link
       href='/'
@@ -215,61 +225,44 @@ function Logo({ className, ...props }) {
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      {resolvedTheme === 'light' ? (
-        <Image
-          src={logoImageLight}
-          alt='Deschutes Design Group LLC'
-          sizes='(max-width: 640px) 32rem, 44rem'
-          className={clsx('h-8 w-auto object-contain sm:h-10')}
-          priority
-        />
-      ) : (
-        <Image
-          src={logoImageDark}
-          alt='Deschutes Design Group LLC'
-          sizes='(max-width: 640px) 32rem, 44rem'
-          className={clsx('h-8 w-auto object-contain sm:h-10')}
-          priority
-        />
-      )}
+      <Image
+        src={logoImageLight}
+        alt='Deschutes Design Group LLC'
+        sizes='(max-width: 640px) 32rem, 44rem'
+        className='h-8 w-auto object-contain sm:h-9 dark:hidden'
+        priority
+      />
+      <Image
+        src={logoImageDark}
+        alt='Deschutes Design Group LLC'
+        sizes='(max-width: 640px) 32rem, 44rem'
+        className='hidden h-8 w-auto object-contain sm:h-9 dark:block'
+        priority
+      />
     </Link>
   );
 }
 
 export function Header() {
-  let isHomePage = usePathname() === '/';
-
   return (
-    <>
-      <header className='pointer-events-none relative z-50 flex flex-none flex-col'>
-        {isHomePage && (
-          <>
-            <div className='order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]' />
-            <Container className='top-0 order-last -mb-3 pt-3'>
-              <Logo className='block h-6 w-auto origin-left sm:h-10' />
-            </Container>
-          </>
-        )}
-        <div className='top-0 z-10 h-16 pt-6'>
-          <Container className='w-full'>
-            <div className='relative flex gap-4'>
-              <div className='flex items-center sm:flex-1'>
-                {!isHomePage && <Logo />}
-              </div>
-              <div className='flex flex-1 justify-end md:justify-center'>
-                <MobileNavigation className='pointer-events-auto md:hidden' />
-                <DesktopNavigation className='pointer-events-auto hidden md:block' />
-              </div>
-              <div className='flex justify-end md:flex-1'>
-                <div className='pointer-events-auto'>
-                  <ThemeToggle />
-                </div>
-              </div>
-            </div>
-          </Container>
+    <header className='sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60'>
+      <Container className='w-full'>
+        <div className='flex h-16 items-center gap-4'>
+          <div className='flex flex-1 items-center'>
+            <Logo />
+          </div>
+          <div className='hidden md:flex md:justify-center'>
+            <DesktopNavigation className='pointer-events-auto' />
+          </div>
+          <div className='flex flex-1 items-center justify-end gap-3'>
+            <ThemeToggle />
+            <Button href='/contact' className='hidden sm:inline-flex'>
+              Start a project
+            </Button>
+            <MobileNavigation className='pointer-events-auto md:hidden' />
+          </div>
         </div>
-      </header>
-      {isHomePage && <div className='flex-none' />}
-    </>
+      </Container>
+    </header>
   );
 }

@@ -1,17 +1,40 @@
 import Link from 'next/link';
-import clsx from 'clsx';
+import { cn } from '@/lib/utils';
 
 const variantStyles = {
+  // Monochrome primary — white-on-dark / black-on-light. The brand discipline:
+  // the spark accent is reserved, not spent on every button.
   primary:
-    'disabled:bg-zinc-500 disabled:hover:text-zinc-100 bg-zinc-800 font-semibold text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70',
+    'bg-foreground text-background hover:bg-foreground/90 active:bg-foreground/80',
   secondary:
-    'disabled:hover:text-zinc-900 bg-zinc-50 font-medium text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70',
+    'border border-border bg-card text-foreground hover:bg-accent active:bg-accent/70',
+  ghost:
+    'text-muted-foreground hover:bg-accent hover:text-foreground active:bg-accent/70',
+  outline:
+    'border border-border bg-transparent text-foreground hover:bg-accent active:bg-accent/70',
+  // Rare, high-impact electric accent.
+  spark:
+    'bg-spark text-primary-foreground shadow-glow hover:bg-spark/90 active:bg-spark/80',
 };
 
-export function Button({ variant = 'primary', className, ...props }) {
-  className = clsx(
-    'inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none',
+const sizeStyles = {
+  sm: 'h-8 gap-1.5 px-3 text-sm',
+  md: 'h-10 gap-2 px-4 text-sm',
+  lg: 'h-11 gap-2 px-5 text-base',
+};
+
+export function Button({
+  variant = 'primary',
+  size = 'md',
+  className,
+  ...props
+}) {
+  className = cn(
+    'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background',
+    'disabled:pointer-events-none disabled:opacity-50',
     variantStyles[variant],
+    sizeStyles[size],
     className
   );
 

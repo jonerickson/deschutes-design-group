@@ -143,20 +143,22 @@ export function Photos() {
         >
           <div
             className={clsx(
-              'flex w-max animate-scroll hover:pause',
+              'flex w-max animate-scroll hover:pause motion-reduce:animate-none',
               isDragging && '[animation-play-state:paused]'
             )}
           >
             {duplicatedPhotos.map((photo, photoIndex) => (
-              <div
+              <button
                 key={photoIndex}
+                type='button'
                 onClick={() => {
                   if (dragRef.current.hasMoved) return;
                   setIsLoading(true);
                   setSelectedPhoto(photos[photoIndex % photos.length]);
                 }}
+                aria-label={`View ${photo.title}`}
                 className={clsx(
-                  'relative aspect-[9/10] h-36 w-60 flex-none cursor-pointer overflow-hidden rounded-xl bg-zinc-100 shadow-lg transition-transform hover:scale-105 sm:h-60 sm:w-[24rem] sm:rounded-2xl dark:bg-zinc-800',
+                  'relative aspect-[9/10] h-36 w-60 flex-none cursor-pointer overflow-hidden rounded-xl border border-border bg-card shadow-lg ring-1 ring-border transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:h-60 sm:w-[24rem] sm:rounded-2xl',
                   rotations[photoIndex % rotations.length],
                   'mr-5 sm:mr-8'
                 )}
@@ -167,7 +169,7 @@ export function Photos() {
                   sizes='(max-width: 640px) 12rem, 28rem'
                   className='absolute inset-0 h-full w-full object-cover'
                 />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -175,19 +177,19 @@ export function Photos() {
 
       {selectedPhoto && (
         <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4'
+          className='fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur-sm'
           onClick={() => setSelectedPhoto(null)}
         >
           <button
             onClick={() => setSelectedPhoto(null)}
-            className='absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/20'
+            className='absolute right-4 top-4 rounded-full border border-border bg-card/80 p-2 text-foreground backdrop-blur-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
             aria-label='Close'
           >
             <X className='h-6 w-6' />
           </button>
           {isLoading && (
             <div className='absolute inset-0 flex items-center justify-center'>
-              <Loader2 className='h-12 w-12 animate-spin text-white' />
+              <Loader2 className='h-12 w-12 animate-spin text-spark motion-reduce:animate-none' />
             </div>
           )}
           <div
@@ -203,8 +205,8 @@ export function Photos() {
               className='h-auto max-h-[85vh] w-auto max-w-[90vw] rounded-t-lg object-contain'
               onLoad={() => setIsLoading(false)}
             />
-            <div className='flex items-center justify-between gap-4 rounded-lg bg-zinc-900/90 px-6 py-4 backdrop-blur-sm'>
-              <h3 className='text-lg font-semibold text-white sm:text-xl'>
+            <div className='flex items-center justify-between gap-4 rounded-b-lg border border-t-0 border-border bg-card/90 px-6 py-4 backdrop-blur-sm'>
+              <h3 className='text-lg font-semibold tracking-tight text-foreground sm:text-xl'>
                 {selectedPhoto.title}
               </h3>
               <Button href={selectedPhoto.url} target='_blank'>
