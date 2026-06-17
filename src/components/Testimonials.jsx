@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -61,9 +62,12 @@ export function Testimonials() {
               <p>&ldquo;{featuredTestimonial.body}&rdquo;</p>
             </blockquote>
             <figcaption className='mt-8 flex items-center gap-x-4'>
-              <img
+              <Image
                 alt=''
                 src={featuredTestimonial.author.imageUrl}
+                width={48}
+                height={48}
+                unoptimized
                 className='size-12 flex-none rounded-full bg-muted ring-2 ring-border'
               />
               <div className='flex-auto'>
@@ -92,9 +96,12 @@ export function Testimonials() {
                 <p>&ldquo;{testimonial.body}&rdquo;</p>
               </blockquote>
               <figcaption className='mt-6 flex items-center gap-x-4 border-t border-border pt-6'>
-                <img
+                <Image
                   alt=''
                   src={testimonial.author.imageUrl}
+                  width={40}
+                  height={40}
+                  unoptimized
                   className='size-10 rounded-full bg-muted ring-2 ring-border'
                 />
                 <div>

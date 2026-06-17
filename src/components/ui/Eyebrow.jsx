@@ -12,7 +12,7 @@ export function Eyebrow({ children, className }) {
         className
       )}
     >
-      <span className='text-spark'>//</span>
+      <span className='text-spark'>{'//'}</span>
       <span>{children}</span>
     </p>
   );

@@ -11,7 +11,7 @@ function ToolsSection({ title, children, divided = true }) {
       }`}
     >
       <h2 className='font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground'>
-        <span className='text-spark'>// </span>
+        <span className='text-spark'>{'// '}</span>
         {title}
       </h2>
       <ul role='list' className='space-y-4 md:col-span-3'>

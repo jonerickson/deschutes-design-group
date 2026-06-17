@@ -129,7 +129,7 @@ export function TerminalCard({ className }) {
   return (
     <div
       className={cn(
-        'relative rounded-xl border border-border bg-card shadow-glow',
+        'relative min-w-0 max-w-full overflow-hidden rounded-xl border border-border bg-card shadow-glow',
         className
       )}
     >
@@ -138,10 +138,10 @@ export function TerminalCard({ className }) {
         <span className='h-3.5 w-3.5 rounded-full bg-muted-foreground/30' />
         <span className='h-3.5 w-3.5 rounded-full bg-muted-foreground/30' />
         <span className='h-3.5 w-3.5 rounded-full bg-muted-foreground/30' />
-        <span className='ml-3 font-mono text-sm text-muted-foreground'>
+        <span className='ml-3 min-w-0 truncate font-mono text-sm text-muted-foreground'>
           {snippet.file}
         </span>
-        <span className='ml-auto font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground/70'>
+        <span className='ml-auto shrink-0 font-mono text-xs uppercase tracking-[0.15em] text-muted-foreground/70'>
           {snippet.lang}
         </span>
       </div>

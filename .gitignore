@@ -4,3 +4,7 @@
 .env.*
 node_modules
 .claude/settings.local.json
+
+# typescript / next generated
+next-env.d.ts
+*.tsbuildinfo

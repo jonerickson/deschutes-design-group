@@ -6,6 +6,9 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/articles/*': ['./src/app/articles/**/*.mdx'],
   },
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 'ui-avatars.com' }],
+  },
 };
 
 const withMDX = createMDX({

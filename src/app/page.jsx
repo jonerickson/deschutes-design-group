@@ -92,9 +92,7 @@ function Hero() {
       <Container className='relative py-20 sm:py-28 lg:py-32'>
         <div className='grid items-center gap-12 lg:grid-cols-2 lg:gap-16'>
           <div className='max-w-xl'>
-            <Eyebrow className='animate-fade-up'>
-              Software engineering — Bozeman, Montana
-            </Eyebrow>
+            <Eyebrow className='animate-fade-up'>Software engineering</Eyebrow>
             <h1 className='mt-6 text-5xl font-semibold tracking-tight sm:text-6xl lg:text-7xl'>
               <span className='text-gradient'>We build software</span>
               <br />

@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             color: '#a1a1aa',
           }}
         >
-          <span style={{ color: '#3b82f6' }}>//</span>
+          <span style={{ color: '#3b82f6' }}>{'//'}</span>
           <span style={{ marginLeft: '12px' }}>
             WE BUILD SOFTWARE ON THE WEB
           </span>

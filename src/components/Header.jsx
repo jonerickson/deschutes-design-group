@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -136,6 +136,7 @@ function MobileNavigation(props) {
         </div>
         <nav className='mt-6'>
           <ul className='-my-2 divide-y divide-border text-base text-foreground'>
+            <MobileNavItem href='/'>Home</MobileNavItem>
             {navigation.map((item) => (
               <MobileNavItem
                 key={item.label}
@@ -198,11 +199,11 @@ function DesktopNavigation(props) {
 function ThemeToggle() {
   let { resolvedTheme, setTheme } = useTheme();
   let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
-  let [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  let mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
   return (
     <button
