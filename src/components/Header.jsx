@@ -23,11 +23,6 @@ const navigation = [
   { label: 'Technology', href: '/technology' },
   { label: 'About', href: '/about' },
   {
-    label: 'Store',
-    href: 'https://store.deschutesdesigngroup.com',
-    external: true,
-  },
-  {
     label: 'Clients',
     href: 'https://portal.deschutesdesigngroup.com',
     external: true,

@@ -103,10 +103,6 @@ const projects = [
     category: 'Integrations',
     description:
       'Seamless Discord integration for Invision Community platforms. Sync users, roles, and channels automatically while driving engagement through real-time notifications and unified member experiences.',
-    link: {
-      href: 'https://store.deschutesdesigngroup.com/buy/eaaa476c-201a-438a-8896-61898ae6fab1',
-      label: 'store.deschutesdesigngroup.com',
-    },
     logo: logoDiscord,
   },
   {
@@ -125,10 +121,6 @@ const projects = [
     category: 'Integrations',
     description:
       'Enterprise-grade email integration for Invision Community platforms. Leverage AWS SES for reliable, scalable transactional emails with advanced deliverability, tracking, and cost optimization.',
-    link: {
-      href: 'https://store.deschutesdesigngroup.com/buy/0182a1f0-48ea-4438-9b40-293441be9f85',
-      label: 'store.deschutesdesigngroup.com',
-    },
     logo: logoAws,
   },
   {
@@ -196,22 +188,28 @@ function ProjectCard({ project }) {
           />
         </div>
         <h3 className='mt-6 text-base font-semibold tracking-tight text-foreground'>
-          <a
-            href={project.link.href}
-            target='_blank'
-            rel='noreferrer'
-            className='transition-colors hover:text-spark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
-          >
-            {project.name}
-          </a>
+          {project.link ? (
+            <a
+              href={project.link.href}
+              target='_blank'
+              rel='noreferrer'
+              className='transition-colors hover:text-spark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+            >
+              {project.name}
+            </a>
+          ) : (
+            project.name
+          )}
         </h3>
         <p className='mt-2 flex-1 text-sm leading-relaxed text-muted-foreground'>
           {project.description}
         </p>
-        <p className='mt-6 flex items-center font-mono text-sm text-muted-foreground transition-colors group-hover:text-spark'>
-          <span>{project.link.label}</span>
-          <ArrowUpRight className='ml-1 h-4 w-4 flex-none' />
-        </p>
+        {project.link && (
+          <p className='mt-6 flex items-center font-mono text-sm text-muted-foreground transition-colors group-hover:text-spark'>
+            <span>{project.link.label}</span>
+            <ArrowUpRight className='ml-1 h-4 w-4 flex-none' />
+          </p>
+        )}
       </Card>
     </li>
   );
