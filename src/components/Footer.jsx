@@ -49,18 +49,8 @@ const columns = [
     heading: 'External',
     links: [
       {
-        label: 'Store',
-        href: 'https://store.deschutesdesigngroup.com',
-        external: true,
-      },
-      {
         label: 'Client Portal',
         href: 'https://portal.deschutesdesigngroup.com',
-        external: true,
-      },
-      {
-        label: 'Affiliate Program',
-        href: 'https://store.deschutesdesigngroup.com/affiliates',
         external: true,
       },
     ],
