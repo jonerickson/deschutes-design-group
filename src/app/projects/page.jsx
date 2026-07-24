@@ -147,6 +147,17 @@ const projects = [
     link: { href: 'https://levissawmill.com', label: 'levissawmill.com' },
     logo: logoVue,
   },
+  {
+    name: 'Cross Timbers Performance Horses',
+    category: 'Concept Work',
+    description:
+      'A self-initiated concept site for a fictional western performance horse program. An exercise in building an identity out of a subject’s own artifacts — judges’ scorecards, arena patterns, livestock brands — rather than a template. Next.js on Vercel, with no UI dependencies beyond the framework.',
+    link: {
+      href: 'https://cross-timbers.vercel.app',
+      label: 'cross-timbers.vercel.app',
+    },
+    logo: logoNext,
+  },
 ];
 
 const categoryOrder = [
@@ -154,6 +165,7 @@ const categoryOrder = [
   'Open Source & Infrastructure',
   'Integrations',
   'Sites',
+  'Concept Work',
 ];
 
 export const metadata = {
