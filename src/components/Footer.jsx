@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { DdgCredit } from '@/components/DdgCredit';
 
 import { ContainerInner, ContainerOuter } from '@/components/Container';
 import {
@@ -125,11 +126,12 @@ export function Footer() {
               ))}
             </div>
 
-            <div className='mt-14 border-t border-border pt-8'>
-              <p className='text-sm text-muted-foreground'>
+            <div className='mt-14 flex flex-col gap-4 border-t border-border pt-8 text-muted-foreground sm:flex-row sm:items-center sm:justify-between'>
+              <p className='text-sm'>
                 &copy; {new Date().getFullYear()} Deschutes Design Group LLC.
                 All rights reserved.
               </p>
+              <DdgCredit label='Built by' />
             </div>
           </div>
         </ContainerInner>
